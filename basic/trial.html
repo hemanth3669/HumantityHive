@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Right to Fair Trial</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fbe7c6; /* Light peach */
+        }
+        header {
+            background-color: #ffcc80; /* Light orange */
+            color: #d84315; /* Deep orange text */
+            text-align: center;
+            padding: 20px;
+            border-bottom: 5px solid #ff7043; /* Bright border */
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            text-shadow: 2px 2px #ff7043;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 5px dotted #ffab40;
+        }
+        h2 {
+            color: #e64a19; /* Bright orange headings */
+            margin-top: 20px;
+        }
+        p, pre {
+            line-height: 1.8;
+            color: #5d4037; /* Brown text */
+            font-size: 1.1rem;
+        }
+        .moral {
+            font-weight: bold;
+            color: #1b5e20; /* Green text */
+            font-size: 1.2rem;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        button {
+            background-color: #4caf50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            font-size: 18px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #388e3c; /* Darker green */
+            transform: scale(1.1); /* Zoom effect */
+        }
+        .fun-elements {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .fun-elements img {
+            max-width: 80px;
+            margin: 0 10px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        .back-btn {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 18px;
+    background-color: #6c757d;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s;
+    font-size: 1em;
+}
+
+.back-btn:hover {
+    background-color: #495057;
+    transform: scale(1.05);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Right to Fair Trial</h1>
+    </header>
+
+    <section>
+        <a href="javascript:history.back()" class="back-btn">⬅ Back</a>
+        <h2>What is the Right to a Fair Trial?</h2>
+        <p>
+            The Right to a Fair Trial ensures that everyone is treated equally in a court of law. 
+            It means people have the right to be heard, to know the evidence against them, and to have a fair chance to defend themselves.
+        </p>
+
+        <h2>Story: Maya and the Missing Necklace 💎</h2>
+        <p>
+            In the peaceful town of Harmonyville, Mrs. Patel’s shiny necklace 💎 went missing. 
+            She thought Maya, her neighbor’s daughter, had taken it because she saw Maya near her house. 
+            Mrs. Patel wanted Maya punished, but wise Judge Arjun said, 
+            <strong>“Everyone deserves a fair trial! Let’s listen to all sides and find the truth.”</strong>
+        </p>
+        <p>
+            Maya explained, <strong>“I was only picking flowers 🌸 from the garden.”</strong> 
+            Then, a little bird 🐦 flew in with the missing necklace—it had dropped it in a tree! 
+            The truth came out, and Maya was innocent. The town realized how important it is to hear both sides before making decisions.
+        </p>
+
+        <h3 class="moral">Moral of the Story:</h3>
+        <p class="moral">
+            "Everyone deserves a fair chance to tell their side of the story. Justice is only fair when the truth is heard." ⚖️✨
+        </p>
+    </section>
+
+    <div class="button-container">
+        <button id="gameButton">Play the Fun Game 🎮</button>
+    </div>
+
+    <div class="fun-elements">
+        <img src="https://img.icons8.com/color/96/balloon.png" alt="Balloon">
+        <img src="https://img.icons8.com/color/96/sun.png" alt="Sun">
+        <img src="https://img.icons8.com/color/96/rainbow.png" alt="Rainbow">
+    </div>
+
+    <script>
+        document.getElementById("gameButton").onclick = function () {
+            window.open(
+                'game.html', 
+                'popup', 
+                'width=600,height=400,scrollbars=yes,resizable=no,toolbar=no,location=no,status=no'
+            );
+        };
+    </script>
+</body>
+</html>

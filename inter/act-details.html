@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Act Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+            transition: background 0.5s ease;
+        }
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            transition: transform 1s, box-shadow 0.2s;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .act-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: #3b4c72;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        /* Smooth fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Apply animation to container */
+.container {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Animate image */
+.act-image {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Animate image when loaded */
+.act-image.loaded {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Back button hover effect */
+.back-link {
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+.back-link:hover {
+    background: #2c3e50;
+    transform: scale(1.05);
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="act-title">Loading...</h1>
+    <img id="act-image" class="act-image" src="" alt="Act Image">
+    <p id="act-content">Please wait...</p>
+    <a href="../inter.html" class="back-link">⬅ Back to Home</a>
+</div>
+
+<script>
+    // Define act details with images and background colors
+    const actSections = {
+        "1": { 
+            title: "Section 1: Registration of Motor Vehicles", 
+            content: `<h1>Understanding Vehicle Registration:</h2> 
+            Why It Matters 🚗✅ Have you ever wondered why every car on the road has a unique number plate? 
+             <p>That’s because of vehicle registration, a legal process that officially links a vehicle to its owner and ensures 
+             it can be driven on public roads</p>
+            <h2>What is Vehicle Registration?</h2>
+             <p>Vehicle registration is like giving your car an official ID. 
+             It involves getting a registration number (license plate) and 
+             a registration certificate (RC) from the government’s transport department.</p>
+
+            <h2>Why is it Important?</h2>
+             <p>1️⃣ Legal Requirement – Driving an unregistered vehicle can get you fined or even lead to legal trouble.<br>
+             2️⃣ Proof of Ownership – The registration document shows that you legally own the vehicle.<br>
+             3️⃣ Safety & Accountability – If a vehicle is involved in an accident or crime, registration helps track the owner.<br>
+             4️⃣ Resale & Transfer – Want to sell your car? A registered vehicle makes the process easier.</p>
+
+            <h2>How to Register a Vehicle?</h2>
+             <p>1️⃣ Visit the local transport office (RTO).<br>
+             2️⃣ Submit documents like ID proof, address proof, insurance, and pollution certificate.<br>
+             3️⃣ Pay the registration fee and road tax.<br>
+             4️⃣ Get your vehicle inspected.<br>
+             5️⃣ Receive your registration number and certificate.</p>
+
+            <h2>Final Thoughts</h2>
+             <p>Vehicle registration is not just paperwork—it’s essential for safety, security, and smooth driving. 
+             So, if you buy a new or used vehicle, make sure it s registered properly. 
+             No registration = No legal driving! 🚦🚗💨</p>`,
+            image: "https://www.shutterstock.com/image-vector/automobile-check-mark-icon-vector-260nw-1414290941.jpg",
+            background: "linear-gradient(to right, #ff9a9e, #fad0c4)"
+        },
+        "2": { 
+            title: "Section 2: Licensing of Drivers", 
+            content: `<h1>🚦 Driver’s License: Your Ticket to the Road! 🚗💨</h1>
+               <p> Getting a driver’s license is an exciting step toward independence! 
+                It means you’re legally allowed to drive, but with great power comes great responsibility. 
+                Let’s break it down in a fun and simple way!</p>
+
+             <h2>🛑 What is a Driver’s License?</h2>
+               <p>A driver’s license is your official permission to drive a specific type of vehicle, whether it’s a car, motorcycle, or truck. 
+                It’s like your passport to the road! Without it, driving is illegal and can get you into trouble.</p>
+
+            <h2>🤔 Why Do You Need a Driver’s License?</h2>
+              <p>✅ Safety First! – Only trained drivers should be on the road to prevent accidents.<br>
+              ✅ It’s the Law! – Driving without a license = big trouble! (Fines, penalties, or even jail 😨).<br>
+              ✅ ID Proof – A driver’s license is also a valid identity card used in many places.</p>
+            
+            <h2>🏁 Types of Driver’s Licenses</h2>
+            <p>📌 Learner’s Permit – Your first step! You can drive under supervision while learning.<br>
+            📌 Private Vehicle License – For personal cars and small vehicles.<br>
+            📌 Motorcycle License – For bikes and scooters. 🏍<br>
+            📌 Commercial License – For heavy vehicles like buses and trucks. 🚛</p>
+
+            <h2>📋 Steps to Get Your Driver’s License</h2>
+              <p>🚦 Step 1: Check the Age Requirement – Usually 16-18 years (varies by country).<br>
+              🚦 Step 2: Apply for a Learner’s Permit – Take a simple written test about traffic rules.<br>
+              🚦 Step 3: Practice, Practice, Practice! – Drive under supervision to gain experience.<br>
+              🚦 Step 4: Take the Driving Test – Show your skills! Pass the test to get your official license.<br>
+              🚦 Step 5: Get Your License! – Congratulations! You’re now a certified driver! 🎉11,</p>
+
+            <h2>🚗 Rules to Follow After Getting Your License</h2>
+              <p> ✔ Always carry your license while driving.
+               ✔ Follow traffic signals and speed limits. 🚦
+               ✔ Never drink and drive – It’s dangerous! 🚫🍻
+               ✔ Renew your license before it expires. ⏳</p>
+
+            <h2>⚠ What Happens If You Drive Without a License?</h2>
+              <p> 🚨 Heavy fines 💸
+               🚨 Your vehicle might be taken 🚗❌
+               🚨 You could be banned from getting a license ⛔</p>
+            
+            <h2>🎯 Final Thoughts</h2>
+             <p>Your driver’s license is more than just a card—it’s a responsibility! 
+             Drive safely, follow the rules, and enjoy the freedom of the open road! 🚘✨
+             Ready to hit the road? Buckle up and drive smart! 🏁😎</p>`,
+            image: "data:image/png;base64,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",
+            background: "linear-gradient(to right, #a18cd1, #fbc2eb)"
+             },
+        "3": { 
+            title: "Section 3: Traffic Rules and Regulations", 
+            content: `<h1>🚦 Traffic Rules & Regulations: Drive Safe, Stay Smart! 🚗💨</h1>
+    <p>Traffic rules are essential for keeping roads safe and preventing accidents. 
+        Whether you're a new driver or an experienced one, following these rules ensures a smooth and safe journey for everyone.</p>
+
+    <h2>📜 Why Are Traffic Rules Important?</h2>
+    <p>✅ <strong>Prevents Accidents</strong> – Saves lives and reduces crashes.<br>
+       ✅ <strong>Smooth Traffic Flow</strong> – Keeps roads organized and prevents chaos.<br>
+       ✅ <strong>Legal Requirement</strong> – Breaking rules can lead to fines, penalties, or even a driving ban.</p>
+
+    <h2>🚦 Basic Traffic Rules Every Driver Must Follow</h2>
+    <p>🔴 <strong>Obey Traffic Signals & Signs</strong> – Always stop at red lights and follow road signs.<br>
+       🚗 <strong>Follow Speed Limits</strong> – Drive within the permitted speed range.<br>
+       🏍 <strong>Wear a Seatbelt & Helmet</strong> – Essential for safety.<br>
+       🚫 <strong>No Drunk Driving</strong> – Driving under the influence is illegal and dangerous.<br>
+       📵 <strong>Avoid Using Mobile Phones</strong> – Distractions lead to accidents.<br>
+       🚑 <strong>Give Way to Emergency Vehicles</strong> – Always let ambulances and fire trucks pass.<br>
+       🚸 <strong>Respect Pedestrian Crossings</strong> – Stop and let pedestrians cross safely.<br>
+       ⏳ <strong>Maintain Safe Distance</strong> – Keep space between vehicles to avoid sudden collisions.</p>
+
+    <h2>⚠ Consequences of Breaking Traffic Rules</h2>
+    <p>🚨 <strong>Heavy fines</strong> 💸<br>
+       🚨 <strong>License suspension</strong> 🚗❌<br>
+       🚨 <strong>Accidents & Injuries</strong> ⛔</p>
+
+    <h2>🎯 Final Thoughts</h2>
+    <p>Traffic rules are not just laws—they are lifesaving guidelines! 
+       Whether you’re driving, cycling, or walking, following these rules ensures that everyone reaches their destination safely.<br>
+       <strong>Drive Smart, Stay Safe! 🚘✨</strong></p>`,
+            image: "https://source.unsplash.com/800x400/?traffic,roads",
+            background: "linear-gradient(to right, #ff9a9e, #fbc2eb)"
+        },
+        "4": { 
+            title: "Section 4: Road Safety and Accident Procedures", 
+            content: `<h1>🚦 Road Safety & Accident Procedures: Stay Safe, Stay Prepared! 🚗💨</h1>
+    <p>Road safety is crucial to prevent accidents and save lives. 
+        Following proper safety measures and knowing how to handle accidents can make a big difference in emergencies.</p>
+
+    <h2>📜 Importance of Road Safety</h2>
+    <p>✅ <strong>Reduces Accidents</strong> – Helps prevent crashes and injuries.<br>
+       ✅ <strong>Protects Pedestrians & Drivers</strong> – Ensures safety for everyone on the road.<br>
+       ✅ <strong>Legal Compliance</strong> – Following rules avoids fines and penalties.</p>
+
+    <h2>🚦 Essential Road Safety Tips</h2>
+    <p>🔴 <strong>Follow Traffic Rules</strong> – Obey signals, signs, and road markings.<br>
+       🚗 <strong>Wear Seatbelts</strong> – Reduces injury risk in accidents.<br>
+       🏍 <strong>Wear Helmets</strong> – Essential for two-wheeler riders.<br>
+       🚫 <strong>Don’t Drink & Drive</strong> – Alcohol impairs judgment and reaction time.<br>
+       📵 <strong>Avoid Distractions</strong> – No texting or calls while driving.<br>
+       🚶 <strong>Be Aware of Pedestrians</strong> – Give way and slow down near crossings.<br>
+       🌧 <strong>Drive Carefully in Bad Weather</strong> – Rain, fog, or snow require extra caution.<br>
+       ⏳ <strong>Maintain Vehicle Health</strong> – Regular servicing prevents breakdowns.</p>
+
+    <h2>⚠ What to Do in Case of an Accident?</h2>
+    <p>🚨 <strong>Stay Calm & Check for Injuries</strong> – Ensure safety of yourself and others.<br>
+       📞 <strong>Call Emergency Services</strong> – Contact police, ambulance, or roadside assistance.<br>
+       🛑 <strong>Move to a Safe Area</strong> – Avoid blocking traffic and prevent further danger.<br>
+       📷 <strong>Document the Incident</strong> – Take photos and note down details.<br>
+       👮 <strong>File a Report</strong> – Inform authorities for official records.<br>
+       🤝 <strong>Exchange Information</strong> – Share contact and insurance details with involved parties.</p>
+
+    <h2>🎯 Final Thoughts</h2>
+    <p>Road safety is a shared responsibility! By following these guidelines, you can help reduce accidents and handle emergencies effectively.<br>
+       <strong>Stay Alert, Stay Safe! 🚘✨</strong></p>`,
+            image: "https://source.unsplash.com/800x400/?road,safety",
+            background: "linear-gradient(to right, #56ccf2, #2f80ed)"
+        },
+        "5": { 
+            title: "Section 5: Penalties and Offenses", 
+            content: `<h1>🚦 Road Safety, Penalties & Offenses: Drive Responsibly! 🚗💨</h1>
+    <p>Road safety is crucial to prevent accidents and save lives. 
+        Following proper safety measures and knowing the penalties for violations can help maintain order on the roads.</p>
+
+    <h2>📜 Importance of Road Safety</h2>
+    <p>✅ <strong>Reduces Accidents</strong> – Helps prevent crashes and injuries.<br>
+       ✅ <strong>Protects Pedestrians & Drivers</strong> – Ensures safety for everyone on the road.<br>
+       ✅ <strong>Legal Compliance</strong> – Following rules avoids fines and penalties.</p>
+
+    <h2>🚦 Essential Road Safety Tips</h2>
+    <p>🔴 <strong>Follow Traffic Rules</strong> – Obey signals, signs, and road markings.<br>
+       🚗 <strong>Wear Seatbelts</strong> – Reduces injury risk in accidents.<br>
+       🏍 <strong>Wear Helmets</strong> – Essential for two-wheeler riders.<br>
+       🚫 <strong>Don’t Drink & Drive</strong> – Alcohol impairs judgment and reaction time.<br>
+       📵 <strong>Avoid Distractions</strong> – No texting or calls while driving.<br>
+       🚶 <strong>Be Aware of Pedestrians</strong> – Give way and slow down near crossings.<br>
+       🌧 <strong>Drive Carefully in Bad Weather</strong> – Rain, fog, or snow require extra caution.<br>
+       ⏳ <strong>Maintain Vehicle Health</strong> – Regular servicing prevents breakdowns.</p>
+
+    <h2>⚠ What to Do in Case of an Accident?</h2>
+    <p>🚨 <strong>Stay Calm & Check for Injuries</strong> – Ensure safety of yourself and others.<br>
+       📞 <strong>Call Emergency Services</strong> – Contact police, ambulance, or roadside assistance.<br>
+       🛑 <strong>Move to a Safe Area</strong> – Avoid blocking traffic and prevent further danger.<br>
+       📷 <strong>Document the Incident</strong> – Take photos and note down details.<br>
+       👮 <strong>File a Report</strong> – Inform authorities for official records.<br>
+       🤝 <strong>Exchange Information</strong> – Share contact and insurance details with involved parties.</p>
+
+    <h2>🚔 Penalties & Offenses</h2>
+    <p>Breaking traffic rules can result in severe consequences. Here are common offenses and their penalties:<br>
+       ❌ <strong>Speeding</strong> – Heavy fines and potential license suspension.<br>
+       ❌ <strong>Drunk Driving</strong> – Fines, imprisonment, and license cancellation.<br>
+       ❌ <strong>Driving Without a License</strong> – Legal action and vehicle confiscation.<br>
+       ❌ <strong>Running Red Lights</strong> – Fines and penalty points on the license.<br>
+       ❌ <strong>Using a Mobile Phone While Driving</strong> – Fines and potential suspension.<br>
+       ❌ <strong>Not Wearing a Seatbelt/Helmet</strong> – Fines and increased accident risks.<br>
+       ❌ <strong>Hit and Run</strong> – Criminal charges and severe legal consequences.</p>
+
+    <h2>🎯 Final Thoughts</h2>
+    <p>Road safety and responsible driving go hand in hand! By obeying traffic rules and avoiding offenses, you can ensure a safer journey for yourself and others.<br>
+       <strong>Drive Smart, Stay Safe! 🚘✨</strong></p>`,
+            image: "https://source.unsplash.com/800x400/?police,penalty",
+            background: "linear-gradient(to right, #f7971e, #ffd200)"
+        },
+        "6": { 
+            title: "Section 6: Vehicle Emissions and Environmental Protection", 
+            content: `
+    <h1>🚗🌍 Vehicle Emissions and Environmental Protection Laws 🌱⚖️</h1>
+    
+    <h2>🌟 Introduction</h2>
+    <p>The rapid growth of the transportation sector has significantly increased vehicle emissions, contributing to environmental degradation and public health concerns. 🚘💨 Vehicle emissions consist of harmful pollutants that affect air quality and accelerate climate change. Addressing this issue through legal frameworks is crucial for sustainable development and environmental protection. 🌎</p>
+    
+    <h2>📜 Legal Regulations on Vehicle Emissions</h2>
+    <p>Governments worldwide have implemented various laws and regulations to control vehicle emissions, including:</p>
+    <ul>
+        <li>⚖️ <strong>The Clean Air Act (U.S.):</strong> Regulates air emissions from mobile and stationary sources, setting standards for vehicle pollutants.</li>
+        <li>🇪🇺 <strong>European Emission Standards:</strong> Establish strict limits on emissions for all new vehicles sold in the EU.</li>
+        <li>🇮🇳 <strong>Bharat Stage Emission Standards (India):</strong> A set of regulations aimed at improving air quality by reducing emissions from vehicles.</li>
+        <li>🇨🇳 <strong>China VI Emission Standards:</strong> One of the most stringent vehicle emission laws, focusing on reducing particulate matter and nitrogen oxides.</li>
+        <li>🌿 <strong>California Air Resources Board (CARB) Regulations:</strong> Stricter than federal U.S. standards, requiring automakers to adopt cleaner technologies.</li>
+    </ul>
+    
+    <h2>🌍 Environmental Impact of Vehicle Emissions</h2>
+    <p>Despite these regulations, excessive vehicle emissions continue to cause environmental issues:</p>
+    <ul>
+        <li>💨 <strong>Air Pollution:</strong> Poor air quality increases respiratory and cardiovascular diseases, prompting stricter enforcement of emission limits.</li>
+        <li>🔥 <strong>Climate Change:</strong> Greenhouse gases from vehicles contribute to rising global temperatures, necessitating further regulatory actions.</li>
+        <li>🌧️ <strong>Acid Rain:</strong> NOₓ and sulfur compounds react with atmospheric moisture, leading to acid rain that damages infrastructure and ecosystems.</li>
+        <li>🦋 <strong>Ecosystem Disruption:</strong> Pollutants affect plant growth, aquatic life, and biodiversity, justifying stronger legal interventions.</li>
+    </ul>
+    
+    <h2>✅ Legal Measures to Reduce Vehicle Emissions</h2>
+    <p>To combat vehicle emissions effectively, governments have introduced legal measures such as:</p>
+    <ol>
+        <li>🔍 <strong>Mandatory Emission Testing:</strong> Regular inspections to ensure compliance with emission standards.</li>
+        <li>⚡ <strong>Incentives for Electric Vehicles (EVs):</strong> Tax credits and subsidies for EV adoption to reduce dependency on fossil fuels.</li>
+        <li>🚫 <strong>Ban on High-Emission Vehicles:</strong> Phasing out older, polluting vehicles through scrappage policies.</li>
+        <li>⛽ <strong>Stricter Fuel Regulations:</strong> Implementing low-sulfur fuels and alternative energy sources.</li>
+        <li>💰 <strong>Penalties for Non-Compliance:</strong> Heavy fines and restrictions for automakers and individuals violating emission norms.</li>
+    </ol>
+    
+    <h2>🏛️ Role of Governments and Individuals</h2>
+    <p>Both policymakers and individuals play a role in reducing vehicle emissions:</p>
+    <ul>
+        <li>📜 <strong>Government Initiatives:</strong> Implementation of stricter emission laws, promotion of clean energy, and subsidies for eco-friendly transport.</li>
+        <li>🚴 <strong>Individual Responsibility:</strong> Adhering to emission standards, using fuel-efficient vehicles, and supporting legal environmental initiatives.</li>
+    </ul>
+    
+    <h2>🌿 Conclusion</h2>
+    <p>Vehicle emissions pose a severe threat to the environment and public health. 
+        🌍 Strong legal frameworks are essential for mitigating their impact.
+         By enforcing stringent regulations, promoting cleaner technologies, and ensuring public compliance, governments can create a sustainable future. Protecting the environment requires a collective legal and societal effort to ensure cleaner air and a healthier world. 🌱💚</p>`,
+            image: "https://source.unsplash.com/800x400/?pollution,car",
+            background: "linear-gradient(to right, #11998e, #38ef7d)"
+        },
+        "7": { 
+            title: "Section 7: Vehicle Maintenance and Inspections", 
+            content: `
+    <h1>🚗 Vehicle Maintenance and Inspections: Legal Considerations ⚖️</h1>
+    
+    <h2>📌 Introduction</h2>
+    <p>Regular vehicle maintenance and inspections are not only essential for ensuring safety, improving performance, and extending the lifespan of a vehicle but are also mandated by various laws and regulations. Legal compliance helps prevent penalties and ensures roadworthiness.</p>
+    
+    <h2>🛠️ Routine Maintenance and Legal Requirements</h2>
+    <ul>
+        <li><strong>🛢️ Oil Changes</strong> - Regular oil changes ensure compliance with environmental laws regarding emissions and waste disposal.</li>
+        <li><strong>🚘 Tire Maintenance</strong> - Proper tire maintenance is required by law to meet safety standards and prevent accidents.</li>
+        <li><strong>⚙️ Brake System</strong> - Brake inspections are necessary to adhere to road safety laws.</li>
+        <li><strong>🔋 Battery Check</strong> - Ensuring a properly functioning battery is crucial to avoid vehicle malfunctions that could lead to legal liability.</li>
+        <li><strong>💧 Fluids Check</strong> - Keeping fluid levels within legal requirements ensures safe vehicle operation.</li>
+        <li><strong>🌫️ Air Filter Replacement</strong> - Helps in reducing emissions, complying with environmental regulations.</li>
+        <li><strong>⛓️ Belt and Hose Inspections</strong> - Regular checks help in meeting vehicle safety inspection standards.</li>
+        <li><strong>💡 Lights and Wipers</strong> - Functioning lights and wipers are legally required for visibility and road safety.</li>
+    </ul>
+    
+    <h2>📋 Mandatory Inspections</h2>
+    <ul>
+        <li><strong>📆 Annual Inspections</strong> - Many jurisdictions require annual vehicle inspections to certify roadworthiness.</li>
+        <li><strong>🌍 Emissions Testing</strong> - Some regions mandate emissions testing to control air pollution.</li>
+        <li><strong>🚛 Pre-Trip Inspections</strong> - Commercial drivers are legally required to conduct pre-trip safety checks.</li>
+        <li><strong>⚠️ Post-Accident Inspections</strong> - Inspections following an accident ensure compliance with insurance and legal requirements.</li>
+    </ul>
+    
+    <h2>⚖️ Legal Importance of Vehicle Inspections</h2>
+    <ul>
+        <li><strong>🔒 Enhances Safety</strong> - Compliance with legal standards reduces the risk of accidents.</li>
+        <li><strong>🚨 Avoids Legal Penalties</strong> - Failure to maintain a vehicle properly can result in fines and penalties.</li>
+        <li><strong>📜 Ensures Compliance with Insurance Policies</strong> - Many insurance policies require proof of regular maintenance and inspections.</li>
+        <li><strong>⚠️ Protects Against Liability</strong> - Proper maintenance can prevent legal action due to negligence.</li>
+    </ul>
+    
+    <h2>🏁 Conclusion</h2>
+    <p>Regular maintenance and legal compliance go hand in hand. 
+        Following a structured vehicle maintenance schedule ensures safety, legal adherence, and efficiency. 
+        Always check local laws and regulations regarding vehicle maintenance to avoid legal issues.</p>`,
+            image: "https://source.unsplash.com/800x400/?mechanic,car",
+            background: "linear-gradient(to right, #ff512f, #dd2476)"
+        },
+        "8": { 
+            title: "Section 8: Insurance and Liability", 
+            content: `<h1>⚖️ Insurance & Liability Law</h1>
+    
+    <h2>🛡️ What is Insurance Law?</h2>
+    <p>Insurance law governs how insurance policies are created and enforced. It ensures that insurance companies and policyholders follow legal obligations.</p>
+    
+    <h2>📜 Types of Insurance</h2>
+    <ul>
+        <li>🚗 Auto Insurance – Covers vehicle damages and accidents.</li>
+        <li>🏠 Property Insurance – Protects homes and buildings from damage.</li>
+        <li>❤️ Health Insurance – Provides medical expense coverage.</li>
+        <li>⚰️ Life Insurance – Offers financial security for beneficiaries.</li>
+        <li>🏢 Business Insurance – Covers liability and losses in businesses.</li>
+    </ul>
+    
+    <h2>⚠️ What is Liability Law?</h2>
+    <p>Liability law determines who is responsible for damages or injuries in legal disputes.</p>
+    
+    <h2>🔍 Types of Liability</h2>
+    <ul>
+        <li>⚖️ <b>Negligence</b> – Failing to act with reasonable care.</li>
+        <li>⚙️ <b>Strict Liability</b> – Responsibility without proof of negligence (e.g., defective products).</li>
+        <li>🩺 <b>Professional Liability</b> – Holds professionals accountable for malpractice.</li>
+        <li>🏢 <b>Employer Liability</b> – Companies are responsible for employees' actions.</li>
+    </ul>
+    
+    <h2>🔄 How Insurance and Liability Work Together</h2>
+    <p>Insurance policies help cover legal claims in liability cases. For example, liability insurance protects businesses from financial losses due to lawsuits.</p>
+    
+    <h2>✅ Claims Process</h2>
+    <ol>
+        <li>📋 File a claim with the insurer.</li>
+        <li>🔎 Investigation by the insurance company.</li>
+        <li>💰 Payment or denial of the claim.</li>
+    </ol>
+    
+    <p>Understanding insurance and liability laws helps individuals and businesses stay protected. 🏦💼</p>
+`,
+            image: "https://source.unsplash.com/800x400/?insurance,car",
+            background: "linear-gradient(to right, #4facfe, #00f2fe)"
+        },
+        "9": { 
+            title: "Section 9: Special Categories of Vehicles", 
+            content: `<h1>🚗 Special Categories of Vehicles 🚜</h1>
+        <p>Different types of vehicles have specific regulations based on their use. Below is a list of special vehicle categories along with their legal and operational implications.</p>
+        
+        <h2>🚑 Emergency Vehicles</h2>
+        <p>Ambulances, fire trucks, and police cars have special privileges such as priority in traffic and exemptions from certain road rules during emergencies.</p>
+        
+        <h2>🚌 Public Transport</h2>
+        <p>Buses, taxis, and trams must follow regulations related to passenger safety, designated stops, and specific driving lanes.</p>
+        
+        <h2>🚛 Heavy Goods Vehicles (HGVs)</h2>
+        <p>Trucks and lorries require special licenses, have weight restrictions, and must adhere to strict safety measures.</p>
+        
+        <h2>🚜 Agricultural Vehicles</h2>
+        <p>Tractors and harvesters are primarily used for farming and may have restrictions on highway use.</p>
+        
+        <h2>🏗️ Construction Vehicles</h2>
+        <p>Bulldozers, cranes, and forklifts operate mainly in work zones and require certified operators.</p>
+        
+        <h2>🏍️ Two/Three-Wheeled Vehicles</h2>
+        <p>Motorcycles, mopeds, and auto-rickshaws have different licensing and helmet regulations.</p>
+        
+        <h2>🚙 Off-Road Vehicles</h2>
+        <p>ATVs, dune buggies, and snowmobiles are generally restricted to designated areas and require special registration.</p>
+        
+        <h2>🪖 Military Vehicles</h2>
+        <p>Tanks and armored vehicles are used for defense purposes and are not for civilian use.</p>
+        
+        <h2>🇺🇳 Diplomatic Vehicles</h2>
+        <p>Vehicles used by diplomats have special privileges and may be exempt from local laws under international agreements.</p>
+        
+        <h2>⚡ Electric & Autonomous Vehicles</h2>
+        <p>Electric and self-driving cars are subject to emerging regulations concerning safety, emissions, and road integration.</p>`,
+            image: "https://source.unsplash.com/800x400/?truck,vehicle",
+            background: "linear-gradient(to right, #6a11cb, #2575fc)"
+        },
+        "10": { 
+            title: "Section 10: Transport of Dangerous Goods", 
+            content: ` <h1>🚛 Transport of Dangerous Goods (TDG) ⚠️</h1>
+
+        <h2>📜 Key Legal Aspects</h2>
+        <ul>
+            <li>📌 <b>International Regulations</b>: UN Model Regulations, IATA (Air), IMDG (Sea), ADR (Road - Europe).</li>
+            <li>📌 <b>National Laws</b>: USA (DOT, PHMSA), Canada (TDGA), EU (ADR, RID, ADN), UK (CDG Regulations).</li>
+        </ul>
+
+        <h2>🚨 Classification of Dangerous Goods</h2>
+        <ul>
+            <li>💥 Class 1: Explosives</li>
+            <li>💨 Class 2: Gases</li>
+            <li>🔥 Class 3: Flammable Liquids</li>
+            <li>⚡ Class 4: Flammable Solids</li>
+            <li>🧪 Class 5: Oxidizers & Organic Peroxides</li>
+            <li>☠️ Class 6: Toxic & Infectious Substances</li>
+            <li>☢️ Class 7: Radioactive Materials</li>
+            <li>🛠️ Class 8: Corrosive Substances</li>
+            <li>📦 Class 9: Miscellaneous Dangerous Goods</li>
+        </ul>
+
+        <h2>🚦 Labeling & Packaging</h2>
+        <ul>
+            <li>📦 UN-Certified Packaging with performance tests.</li>
+            <li>⚠️ Hazard labels with symbols for quick identification.</li>
+            <li>🔖 Proper shipping names & UN numbers on containers.</li>
+        </ul>
+
+        <h2>📝 Transport Documentation</h2>
+        <ul>
+            <li>📜 <b>Dangerous Goods Declaration (DGD)</b>: Describes type, quantity & handling instructions.</li>
+            <li>📄 <b>Safety Data Sheets (SDS)</b>: Provides risks & handling procedures.</li>
+            <li>🚑 <b>Emergency Response Guide (ERG)</b>: Instructions for spills, leaks, or accidents.</li>
+        </ul>
+
+        <h2>🎓 Training & Compliance</h2>
+        <ul>
+            <li>👨‍🏫 Employers must provide TDG training & certification.</li>
+            <li>❌ Non-compliance can lead to fines, license revocation, or criminal charges.</li>
+        </ul>
+
+        <h2>⚖️ Enforcement & Penalties</h2>
+        <ul>
+            <li>🔍 Government inspections & audits ensure compliance.</li>
+            <li>💰 Penalties include fines, shipment delays & criminal liability.</li>
+        </ul>
+
+        <p>🔗 <b>Stay compliant & ensure safety when transporting dangerous goods! 🚛⚠️</b></p>`,
+            image: "https://source.unsplash.com/800x400/?hazardous,truck",
+            background: "linear-gradient(to right, #ff416c, #ff4b2b)"
+        },
+        "11": { 
+            title: "Section 11: Road Tax and Fees", 
+            content: ` <h1>🚗 Road Tax & Fees: Legal Aspects</h1>
+    
+    <h2>📖 Definition of Road Tax</h2>
+    <p>Road tax, also known as vehicle excise duty (VED), is a mandatory fee for using public roads. Funds are used for road maintenance and infrastructure development.</p>
+    
+    <h2>💡 Legal Basis for Road Tax</h2>
+    <ul>
+        <li>📚 <b>Motor Vehicles Act</b>: Defines tax rules based on vehicle type and usage.</li>
+        <li>🏛️ <b>State/Provincial Laws</b>: Additional local government charges may apply.</li>
+        <li>🌿 <b>Environmental Regulations</b>: Higher taxes for high-emission vehicles.</li>
+    </ul>
+    
+    <h2>💸 Types of Road Taxes & Fees</h2>
+    <ul>
+        <li>🕒 <b>Annual Road Tax</b>: Paid yearly based on vehicle category.</li>
+        <li>🚧 <b>Toll Fees</b>: Charged for highways, bridges, or tunnels.</li>
+        <li>🌱 <b>Emission-Based Fees</b>: Higher charges for polluting vehicles.</li>
+        <li>📅 <b>Registration Fees</b>: Paid upon vehicle registration.</li>
+        <li>💎 <b>Luxury/Commercial Tax</b>: Higher tax for premium or heavy-duty vehicles.</li>
+    </ul>
+    
+    <h2>🚨 Consequences of Non-Payment</h2>
+    <ul>
+        <li>💳 <b>Fines & Penalties</b>: Additional charges for late payment.</li>
+        <li>🚣 <b>Vehicle Impoundment</b>: Authorities may seize vehicles.</li>
+        <li>🔒 <b>Legal Action</b>: Prosecution under tax and traffic laws.</li>
+    </ul>
+    
+    <h2>🆒 Exemptions & Concessions</h2>
+    <ul>
+        <li>🚒 Government & emergency vehicles.</li>
+        <li>🚴 Electric & hybrid vehicles (in some areas).</li>
+        <li>🦰 Vehicles for disabled persons.</li>
+    </ul>
+    
+    <h2>🔒 Dispute Resolution</h2>
+    <p>If you dispute a road tax charge, you can:</p>
+    <ul>
+        <li>📄 Appeal to the transport authority.</li>
+        <li>👥 Seek legal help via courts or tribunals.</li>
+    </ul>
+    
+    <h2>📆 Recent Legal Developments</h2>
+    <p>Road tax laws are updated frequently. Check official government sources for the latest rules.</p>`,
+            image: "https://source.unsplash.com/800x400/?tax,road",
+            background: "linear-gradient(to right, #fdcbf1, #e6dee9)"
+        }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+const actId = params.get("id");
+
+if (actId && actSections[actId]) {
+    const section = actSections[actId];
+    
+    document.getElementById("act-title").textContent = section.title;
+    document.getElementById("act-image").src = section.image;
+    document.getElementById("act-image").alt = section.title;
+    document.body.style.background = section.background;
+    document.getElementById("act-content").innerHTML = section.content;
+
+    // Apply animation when the image loads
+    document.getElementById("act-image").onload = function () {
+        this.classList.add("loaded");
+    };
+
+    // Handle broken images gracefully
+    document.getElementById("act-image").onerror = function () {
+        this.src = "https://via.placeholder.com/800x400?text=Image+Not+Available";
+        this.classList.add("loaded");
+    };
+    
+} else {
+    document.getElementById("act-title").textContent = "Act Not Found";
+    document.getElementById("act-content").innerHTML = "<p>Invalid section ID. Please return to the homepage.</p>";
+
+    // Redirect back after 3 seconds if no valid act ID is found
+    setTimeout(() => {
+        window.location.href = "../inter.html";
+    }, 3000);
+}
+
+</script>
+
+</body>
+</html>

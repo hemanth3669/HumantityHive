@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Building Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+
+        .game-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .letters-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .letter {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            background-color: #f1f1f1;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .letter:hover {
+            background-color: #d1e7fd;
+        }
+
+        .current-word {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Word Building Game</h1>
+        <div class="letters-container" id="letters-container">
+            <!-- Letters will appear here -->
+        </div>
+        <div class="current-word">
+            <h2>Current Word: <span id="current-word"> </span></h2>
+        </div>
+        <button id="check-word">Check Word</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'];
+        const validWords = ['LIFE'];
+
+        let currentWord = "";
+
+        const lettersContainer = document.getElementById("letters-container");
+        const currentWordDisplay = document.getElementById("current-word");
+        const checkWordButton = document.getElementById("check-word");
+        const messageDisplay = document.getElementById("message");
+
+        // Function to create the letter buttons
+        function generateLetters() {
+            letters.forEach(letter => {
+                const letterElement = document.createElement("div");
+                letterElement.classList.add("letter");
+                letterElement.textContent = letter;
+                letterElement.onclick = () => addLetterToWord(letter);
+                lettersContainer.appendChild(letterElement);
+            });
+        }
+
+        // Function to add letter to current word
+        function addLetterToWord(letter) {
+            currentWord += letter;
+            currentWordDisplay.textContent = currentWord;
+        }
+
+        // Function to check if the current word is valid
+        function checkWord() {
+            if (validWords.includes(currentWord)) {
+                messageDisplay.textContent = "Valid Word!";
+                messageDisplay.style.color = "green";
+            } else {
+                messageDisplay.textContent = "Invalid Word!";
+                messageDisplay.style.color = "red";
+            }
+            currentWord = ""; // Reset the current word
+            currentWordDisplay.textContent = "";
+        }
+
+        // Event listener for check word button
+        checkWordButton.addEventListener("click", checkWord);
+
+        // Initialize the game by generating the letters
+        generateLetters();
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Right to Life, Liberty, and Security</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFAF0; /* Light cream background */
+        }
+        header {
+            background-color: #FFD700; /* Bright yellow */
+            color: #8B0000; /* Dark red */
+            text-align: center;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #FFF8DC; /* Light yellow */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #FF4500; /* Bright orange */
+            text-align: center;
+            text-shadow: 2px 2px #FFD700;
+        }
+        article {
+            line-height: 1.8;
+            color: #8B4513; /* Saddle brown */
+            background-color: #FFFAF0;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 18px;
+            box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+        }
+        .story h3 {
+            color: #4B0082; /* Indigo */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .story p {
+            margin: 10px 0;
+        }
+        button {
+            background-color: #FF69B4; /* Hot pink */
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #FF1493; /* Deeper pink */
+            transform: scale(1.1);
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .sparkles {
+            animation: sparkle 2s infinite;
+        }
+        @keyframes sparkle {
+            0% { text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700; }
+            50% { text-shadow: 0 0 15px #FF4500, 0 0 20px #FF4500; }
+            100% { text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700; }
+        }
+        .back-btn {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 18px;
+    background-color: #6c757d;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s;
+    font-size: 1em;
+}
+
+.back-btn:hover {
+    background-color: #495057;
+    transform: scale(1.05);
+}
+    </style>
+</head>
+<body>
+    <header>
+        🌟 Welcome to the World of Right to Life 🌟
+    </header>
+    <a href="javascript:history.back()" class="back-btn">⬅ Back</a>
+
+    <h1 class="sparkles">Right to Life</h1>
+
+    <section>
+        <article class="story">
+            <h3>🌟 The Story of Mia and the Magic Feather 🪶</h3>
+            <p><strong>Mia:</strong> “Grandpa, why do you keep this shiny feather?”</p>
+            <p><strong>Grandpa:</strong> “It reminds me of the magical forest 🌳, 
+            where animals like rabbits 🐇, bears 🐻, and even ants 🐜 lived together happily.</p>
+            <p>One day, a strong wind 🌪️ hurt some animals, and the wise owl 🦉 said, 
+            ‘Every life matters—we must protect each other.’ The animals built safer homes 🏡 
+            and promised to never harm one another.</p>
+            <p>💖 This feather reminds me that just like them, we must care for and protect all lives.”</p>
+            <p><strong>Mia:</strong> “Wow, Grandpa! I’ll keep it safe too to remember that every life is special!”</p>
+            <p><strong>Grandpa:</strong> (Hugging her 🤗) “That’s my girl!”</p>
+            <h3>🌟 Moral of the Story 🌟</h3>
+            <p>Every life is precious and deserves care, respect, and protection. 
+            By working together and looking out for one another, we can create a safer and kinder world for everyone. 🌟💖</p>
+        </article>
+        <div class="button-container">
+            <button id="myButton">🎮 Play the Game!</button>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("myButton").onclick = function () {
+            window.open('game.html', 'popup', 'width=600,height=400,scrollbars=yes,resizable=no,toolbar=no,location=no,status=no');
+        };
+    </script>
+</body>
+</html>

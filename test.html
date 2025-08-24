@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driving License Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            color: #333;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .question {
+            font-size: 22px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .options button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .options button:hover {
+            background-color: #f9a825;
+            color: white;
+        }
+        .correct {
+            background-color: #4CAF50 !important;
+            color: white;
+        }
+        .incorrect {
+            background-color: #F44336 !important;
+            color: white;
+        }
+        #next-btn, #restart-btn {
+            margin-top: 15px;
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: none;
+        }
+        #next-btn:hover, #restart-btn:hover {
+            background-color: #1565C0;
+        }
+        #result {
+            font-weight: bold;
+            font-size: 20px;
+            display: none;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>🚦 Driving License Quiz 🚗</h2>
+        <div id="question-container">
+            <p class="question" id="question"></p>
+            <div class="options" id="options"></div>
+        </div>
+        <button id="next-btn" onclick="nextQuestion()">Next</button>
+        <button id="restart-btn" onclick="startQuiz()">Restart Quiz</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        let quizData = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        function startQuiz() {
+            quizData = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 10);
+            currentQuestionIndex = 0;
+            score = 0;
+            document.getElementById("question-container").style.display = "block";
+            document.getElementById("next-btn").style.display = "none";
+            document.getElementById("restart-btn").style.display = "none";
+            document.getElementById("result").style.display = "none";
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const questionData = quizData[currentQuestionIndex];
+            document.getElementById("question").textContent = questionData.question;
+            
+            const optionsContainer = document.getElementById("options");
+            optionsContainer.innerHTML = "";
+
+            questionData.options.forEach((option, index) => {
+                const button = document.createElement("button");
+                button.textContent = option;
+                button.onclick = () => checkAnswer(index);
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selectedIndex) {
+            const buttons = document.querySelectorAll(".options button");
+            if (selectedIndex === quizData[currentQuestionIndex].answer) {
+                score++;
+                buttons[selectedIndex].classList.add("correct");
+            } else {
+                buttons[selectedIndex].classList.add("incorrect");
+                buttons[quizData[currentQuestionIndex].answer].classList.add("correct");
+            }
+            document.getElementById("next-btn").style.display = "block";
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
+                document.getElementById("next-btn").style.display = "none";
+            } else {
+                endQuiz();
+            }
+        }
+
+        function endQuiz() {
+            document.getElementById("question-container").style.display = "none";
+            document.getElementById("next-btn").style.display = "none";
+            let resultText = `Quiz Over! Your score: ${score}/${quizData.length}. `;
+            resultText += score >= 7 ? "🎉 Congratulations! You passed the driving test!" : "❌ You did not pass. Try again.";
+            document.getElementById("result").textContent = resultText;
+            document.getElementById("result").style.display = "block";
+            document.getElementById("restart-btn").style.display = "block";
+        }
+
+        const allQuestions = [
+            { question: "What does a red traffic light mean?", options: ["Slow down", "Stop", "Speed up", "Proceed with caution"], answer: 1 },
+            { question: "When should you use your headlights?", options: ["Only at night", "In fog or rain", "Only on highways", "Never during the daytime"], answer: 1 },
+            { question: "What should you do before changing lanes?", options: ["Check mirrors and blind spots", "Speed up suddenly", "Only check rearview mirror", "Just turn without signaling"], answer: 0 },
+            { question: "What does a yellow road sign indicate?", options: ["Mandatory stop", "A warning or caution", "A service area", "A highway exit"], answer: 1 },
+            { question: "What should you do if your vehicle starts to skid?", options: ["Slam on the brakes", "Turn in the opposite direction", "Steer into the skid and ease off gas", "Accelerate"], answer: 2 }
+        ];
+
+        startQuiz();
+    </script>
+</body>
+</html>

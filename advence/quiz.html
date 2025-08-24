@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirbhaya Case Study & Brain Analysis Quiz</title>
+    
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 22px;
+        }
+
+        main {
+            width: 80%;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #c0392b;
+        }
+
+        ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+
+        button {
+            background: #2980b9;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #1c5980;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+
+        .quiz-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 8px;
+        }
+
+        .quiz-section h2 {
+            text-align: center;
+        }
+
+        .quiz-options label {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nirbhaya Case Study & Brain Analysis Quiz</h1>
+        <p>Justice Prevails: A Landmark Case That Changed Indian Laws</p>
+    </header>
+
+    <main>
+        <section class="introduction">
+            <h2>Introduction</h2>
+            <p>The **Nirbhaya case** refers to the **brutal gang rape and murder** of Jyoti Singh in Delhi on **December 16, 2012**. It sparked nationwide protests and led to **strict legal reforms** in India.</p>
+        </section>
+
+        <section class="case-overview">
+            <h2>Case Overview</h2>
+            <ul>
+                <li><strong>Date:</strong> December 16, 2012</li>
+                <li><strong>Location:</strong> Munirka, South Delhi</li>
+                <li><strong>Victim:</strong> Jyoti Singh (Nirbhaya)</li>
+                <li><strong>Accused:</strong> Six individuals (Five adults, One juvenile)</li>
+            </ul>
+        </section>
+
+        <section class="quiz-section">
+            <h2>Brain Analysis Quiz</h2>
+            <p><strong>Choose the answer that best reflects your thought process:</strong></p>
+            <form id="quiz-form">
+                <label>1. What should be the ideal punishment for such crimes?</label>
+                <input type="radio" name="q1" value="law"> Strict legal action with fair trials<br>
+                <input type="radio" name="q1" value="police"> Quick justice through strong law enforcement<br>
+                <input type="radio" name="q1" value="human_rights"> Focus on rehabilitation of criminals<br>
+                <input type="radio" name="q1" value="social_work"> Educate society to prevent such crimes<br>
+
+                <label>2. What do you believe is the best way to prevent crimes against women?</label>
+                <input type="radio" name="q2" value="law"> Stricter laws and judicial reforms<br>
+                <input type="radio" name="q2" value="police"> More police presence and fast-track courts<br>
+                <input type="radio" name="q2" value="human_rights"> Changing the mindset of people<br>
+                <input type="radio" name="q2" value="social_work"> Community awareness and education<br>
+
+                <label>3. If you were in a position of power, how would you handle a similar case?</label>
+                <input type="radio" name="q3" value="law"> Ensure legal justice through proper channels<br>
+                <input type="radio" name="q3" value="police"> Arrest the criminals immediately and ensure they don’t escape<br>
+                <input type="radio" name="q3" value="human_rights"> Work on rehabilitation and social reform<br>
+                <input type="radio" name="q3" value="social_work"> Conduct workshops to change societal behavior<br>
+
+                <button type="button" onclick="analyzeBrain()">Submit</button>
+            </form>
+            <p class="result" id="quiz-result"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Justice & Awareness Portal</p>
+    </footer>
+
+    <script>
+        function analyzeBrain() {
+            let answers = document.querySelectorAll('input[type="radio"]:checked');
+            let scores = { law: 0, police: 0, human_rights: 0, social_work: 0 };
+
+            answers.forEach(answer => {
+                scores[answer.value]++;
+            });
+
+            let highest = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+
+            let resultText = "Your brain analysis result: ";
+            if (highest === "law") {
+                resultText += "You have a strong legal mindset! You might excel in law and judiciary roles.";
+            } else if (highest === "police") {
+                resultText += "You have an authoritative and justice-driven mindset! A career in law enforcement may suit you.";
+            } else if (highest === "human_rights") {
+                resultText += "You think about social justice and rehabilitation! You may do well in human rights activism.";
+            } else {
+                resultText += "You believe in education and awareness! A career in social work or community service could be ideal.";
+            }
+
+            document.getElementById("quiz-result").innerText = resultText;
+        }
+    </script>
+
+</body>
+</html>

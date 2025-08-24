@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justice & Awareness Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
+body {
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    padding: 0;
+    background: #1E1E2D;
+    text-align: center;
+    color: #E5C100;
+}
+
+header {
+    background: #0F1A2E;
+    color: white;
+    padding: 30px;
+    font-size: 26px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    font-weight: bold;
+    border-bottom: 3px solid #E5C100;
+}
+
+.back-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #B22222;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #8B0000;
+}
+
+.info {
+    background: #28283D;
+    padding: 35px;
+    margin: 30px auto;
+    width: 80%;
+    box-shadow: 0px 6px 12px rgba(255, 215, 0, 0.3);
+    border-radius: 12px;
+    border-left: 5px solid #B8860B;
+    color: #E5C100;
+}
+
+.info h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #FFD700;
+    text-transform: uppercase;
+}
+
+.info p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.case-study-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px;
+}
+
+.case-study {
+    background: #28283D;
+    padding: 25px;
+    width: 350px;
+    box-shadow: 0px 6px 12px rgba(255, 215, 0, 0.3);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid #4682B4;
+    color: #E5C100;
+}
+
+.case-study h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    color: #FFD700;
+}
+
+.case-study p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.case-study:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(255, 215, 0, 0.4);
+}
+
+button {
+    background: #B8860B;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #DAA520;
+    color: black;
+}
+
+footer {
+    background: #0F1A2E;
+    color: white;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border-top: 3px solid #E5C100;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .case-study-options {
+        flex-direction: column;
+        align-items: center;
+    }
+    .case-study {
+        width: 90%;
+    }
+    .back-btn {
+        left: 10px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <button class="back-btn" onclick="goBack()">Back</button>
+        <h1>Justice & Awareness Portal</h1>
+        <p>Explore the impact of landmark legal cases and understand justice in society.</p>
+    </header>
+
+    <section class="info">
+        <h2>Explore Landmark Legal Cases</h2>
+        <p>Understanding past legal cases helps shape the future of justice. This portal provides in-depth analysis of major cases that have influenced laws and societal norms. Learn about the incidents, judicial proceedings, and the reforms they triggered.</p>
+    </section>
+
+    <section class="case-study-options">
+        <div class="case-study">
+            <h3>Case Study 1: Nirbhaya Case</h3>
+            <p>The 2012 Nirbhaya case involved a brutal crime that led to significant legal reforms in India, including stricter laws for crimes against women and the establishment of fast-track courts.</p>
+            <button onclick="window.location.href='nirbhaya.html'">Read More</button>
+        </div>
+        <div class="case-study">
+            <h3>Case Study 2: Vishaka Guidelines</h3>
+            <p>The Vishaka case was a landmark judgment that led to the formation of laws against sexual harassment in workplaces, shaping gender equality in India.</p>
+            <button onclick="window.location.href='vishaka.html'">Read More</button>
+        </div>
+    </section>
+    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Justice & Awareness Portal. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

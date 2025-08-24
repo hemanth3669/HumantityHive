@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Right to Life, Liberty, and Security</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: linen;
+        }
+        header {
+            background-color: linen;
+            color: maroon;
+            text-align: center;
+            padding: 10px 0;
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            background-color: linen;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+        h1, h2 {
+            color: maroon;
+            text-align: center;
+        }
+        p {
+            line-height: 1.6;
+            color: maroon;
+            text-align: justify;
+        }
+        .story {
+            background-color: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 9px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        button {
+            background-color: #04AA6D;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #028a58;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-btn {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 18px;
+    background-color: #6c757d;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s;
+    font-size: 1em;
+}
+
+.back-btn:hover {
+    background-color: #495057;
+    transform: scale(1.05);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Freedom of Religion</h1>
+    </header>
+
+    <section>
+        <a href="javascript:history.back()" class="back-btn">⬅ Back</a>
+        <h2>What is Freedom of Religion?</h2>
+        <p>
+            The Freedom of Religion means everyone has the right to believe in and practice any religion—or 
+            none at all—without fear or discrimination. It ensures respect for everyone’s beliefs.
+        </p>
+
+        <div class="story">
+            <h2>Story: The Festival of Lanterns 🏮</h2>
+            <p>
+                In the town of Sunridge, people from different faiths lived together—some prayed in temples 🛕, 
+                others in mosques 🕌, churches ⛪, or under the open sky 🌌.
+                One day, the children decided to hold a big lantern festival 🏮. 
+            </p>
+            <p>
+                Each child painted their lantern with symbols from their traditions. When night fell, they lit the lanterns 
+                and released them into the sky 🌟.
+            </p>
+            <p>
+                Everyone watched in awe as the lanterns floated together, blending their colors and light.
+                “Even though we believe in different things, we’re all part of the same sky,” said Zara, a little girl.
+            </p>
+            <p>
+                From that day, the lantern festival became a tradition to celebrate unity in diversity.
+            </p>
+            <h3>Moral of the Story:</h3>
+            <p>
+                "Everyone has the right to follow their beliefs, and respecting each other’s differences brings us closer together." 🕊️✨
+            </p>
+        </div>
+    </section>
+
+    <div class="button-container">
+        <button id="myButton">Play Game</button>
+    </div>
+
+    <script>
+        document.getElementById("myButton").onclick = function () {
+            window.open('game.html', 'popup', 'width=600,height=400,scrollbars=yes,resizable=no,toolbar=no,location=no,status=no');
+        };
+    </script>
+</body>
+</html>

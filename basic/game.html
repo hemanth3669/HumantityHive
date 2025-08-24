@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Building Game</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #ffefd5;
+            padding: 20px;
+        }
+        .game-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            border: 4px dashed #ff7043;
+        }
+        h1 {
+            color: #d32f2f;
+            text-shadow: 2px 2px #ff6f00;
+        }
+        .letter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .letter {
+            font-size: 28px;
+            font-weight: bold;
+            padding: 15px;
+            background: #4caf50;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-block;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+        }
+        .word-box {
+            min-height: 50px;
+            padding: 15px;
+            border: 3px solid #000;
+            background: #f8f8f8;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 12px 25px;
+            font-size: 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #388e3c;
+            transform: scale(1.1);
+        }
+        button:disabled {
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>🎮 Word Building Game 🎨</h1>
+        <p id="hint"></p>
+        <p id="timer">Time Left: 30s</p>
+        <p id="score">Score: 0</p>
+        <div class="letter-container" id="scrambledWord"></div>
+        <div class="word-box" id="wordBox"></div>
+        <button onclick="removeLastLetter()">Back</button>
+        <button onclick="resetWord()">Undo All</button>
+        <button onclick="getHint()">Hint</button>
+        <button onclick="checkAnswer()">Submit</button>
+        <button onclick="loadGame()">Try Again</button>
+        <p id="message"></p>
+        <button id="nextLevel" onclick="nextLevel()" disabled>Next Level</button>
+    </div>
+
+    <script>
+        const words = [
+            { scrambled: "OMDEERF", answer: "FREEDOM", hint: "What do we have the right to express?" },
+            { scrambled: "EHOIVC", answer: "VOICE", hint: "What do we use to express ourselves?" },
+            { scrambled: "HTSING", answer: "RIGHTS", hint: "What are the freedoms we are entitled to?" }
+        ];
+        
+        let currentLevel = 0;
+        let selectedWord = "";
+        let selectedElements = [];
+        let score = 0;
+        let timer;
+        let timeLeft = 30;
+
+        function loadGame() {
+            document.getElementById("hint").textContent = "Hint: " + words[currentLevel].hint;
+            document.getElementById("scrambledWord").innerHTML = "";
+            document.getElementById("wordBox").innerHTML = "";
+            document.getElementById("message").textContent = "";
+            document.getElementById("nextLevel").disabled = true;
+            selectedWord = "";
+            selectedElements = [];
+            timeLeft = 30;
+            document.getElementById("timer").textContent = "Time Left: 30s";
+            startTimer();
+            
+            let letters = words[currentLevel].scrambled.split('').sort(() => Math.random() - 0.5);
+            letters.forEach(letter => {
+                let span = document.createElement("span");
+                span.textContent = letter;
+                span.classList.add("letter");
+                span.onclick = () => addLetter(letter, span);
+                document.getElementById("scrambledWord").appendChild(span);
+            });
+        }
+
+        function startTimer() {
+            clearInterval(timer);
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById("timer").textContent = "Time Left: " + timeLeft + "s";
+                if (timeLeft === 0) {
+                    clearInterval(timer);
+                    document.getElementById("message").textContent = "⏳ Time's up! Try again.";
+                }
+            }, 1000);
+        }
+
+        function addLetter(letter, element) {
+            selectedWord += letter;
+            let span = document.createElement("span");
+            span.textContent = letter;
+            span.classList.add("letter");
+            document.getElementById("wordBox").appendChild(span);
+            element.style.visibility = "hidden";
+            selectedElements.push({ letter, element, span });
+        }
+        
+        function removeLastLetter() {
+            if (selectedElements.length > 0) {
+                let last = selectedElements.pop();
+                selectedWord = selectedWord.slice(0, -1);
+                last.element.style.visibility = "visible";
+                last.span.remove();
+            }
+        }
+        
+        function resetWord() {
+            selectedElements.forEach(({ element, span }) => {
+                element.style.visibility = "visible";
+                span.remove();
+            });
+            selectedElements = [];
+            selectedWord = "";
+        }
+        
+        function getHint() {
+            document.getElementById("message").textContent = "Hint: " + words[currentLevel].answer.charAt(0);
+        }
+        
+        function checkAnswer() {
+            if (selectedWord === words[currentLevel].answer) {
+                score += 10;
+                document.getElementById("score").textContent = "Score: " + score;
+                document.getElementById("message").textContent = "🎉 Correct! Well done! 🎊";
+                document.getElementById("nextLevel").disabled = false;
+                clearInterval(timer);
+            } else {
+                document.getElementById("message").textContent = "❌ Try again!";
+            }
+        }
+        
+        loadGame();
+    </script>
+</body>
+</html>

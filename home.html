@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanity Hive</title>
+    <link rel="icon" href="image/icon.png" type="image/icon type">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://t3.ftcdn.net/jpg/04/85/39/76/360_F_485397626_ydPEYshMKRIyY7HIH2jUCLu8nkC7X2KH.jpg');
+            background-repeat: no-repeat;
+            background-size:100% 100%;
+            background-attachment: fixed;
+        }
+
+        /* Scrolling News Section */
+        .news-section {
+            background-color: #333;
+            color: #fff;
+            height: 60px;
+            padding: 15px 20px;
+            overflow: hidden;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+        }
+
+        .news-content {
+            display: inline-block;
+            animation: scrollNews 30s linear infinite;
+            font-size: 1.2rem;
+        }
+
+        @keyframes scrollNews {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Horizontal Scroll Bar */
+        .scroll-bar {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            background-color: #f4f4f4;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 60px;
+            z-index: 1000;
+        }
+
+        .scroll-bar a {
+            display: inline-block;
+            margin-right: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 20px;
+            background-color: whitesmoke;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .scroll-bar a:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* Image Scrolling Section */
+        .image-scroll-container {
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px;
+            position: relative;
+        }
+
+        .image-scroll {
+            display: flex;
+            gap: 15px;
+            animation: scrollImages 20s linear infinite;
+        }
+
+        .image-scroll img {
+            width: 400px;
+            height: 300px;
+            object-fit: fill;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animation */
+        @keyframes scrollImages {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Pause scrolling on hover */
+        .image-scroll-container:hover .image-scroll {
+            animation-play-state: paused;
+            
+        }
+
+        /* Main Content */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        section {
+            background-color: rgb(243, 226, 226);
+            text-align: center;
+            border-radius: 20px;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 1s, box-shadow 0.2s;
+        }
+
+        section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        section h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        section p {
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scrolling News Section -->
+    <div class="news-section">
+        <div class="news-content">
+            Breaking News: New human rights legislation introduced in Parliament | International law summit happening next week in Geneva | UN calls for stronger enforcement of refugee rights policies | Awareness campaigns on human rights launched globally | Stay tuned for more updates!
+        </div>
+    </div>
+
+    <!-- Horizontal Scroll Bar -->
+    <div class="scroll-bar">
+        <a href="basic.html">Basic Rights</a>
+        <a href="inter.html">Intermediate Rights</a>
+        <a href="advence/home.html">Advanced Rights</a>
+    </div>
+
+    <!-- Auto-Scrolling Image Section -->
+    <div class="image-scroll-container">
+        <div class="image-scroll">
+           
+           <a href="https://epaper.sakshi.com/Andhra_Pradesh_Main?eid=99&edate=15/03/2025&pgid=581831&device=desktop&view=3"> <img src="image/shaik.png" alt="Justice"></a>
+           <a href="https://epaper.sakshi.com/Andhra_Pradesh_Main?eid=99&edate=16/03/2025&pgid=582711&device=desktop&view=3"> <img src="image/dam.png" alt="Freedom"></a>
+           <a href="https://epaper.sakshi.com/Karimnagar_Main?eid=216&edate=16/03/2025&pgid=582410&device=desktop&view=3"> <img src="image/telagana.png" alt="Peace"></a> 
+           <a href="https://epaper.andhrajyothy.com/NTR_VIJAYAWADA_MAIN?eid=182&edate=16/03/2025&pgid=1016646&device=desktop&view=3"> <img src="image/trump.png" alt="Diversity"></a>
+            <!-- Duplicate images for smooth infinite scrolling -->
+            <img src="https://www.indialaw.in/wp-content/uploads/2019/11/ETM_2019_11_18_Page_12_cropped.png" alt="Human Rights">
+            <img src="https://educationtoday.co/blogs/wp-content/uploads/2022/08/WhatsApp-Image-2022-08-30-at-4.34.24-PM.jpeg" alt="Justice">
+            <img src="https://educationtoday.co/blogs/wp-content/uploads/2022/02/WhatsApp-Image-2022-02-21-at-12.11.25-PM-1024x923.jpeg" alt="Freedom">
+            <img src="https://www.mvgrce.com/images/2023/09/26/news112.40.28.jpg" alt="Peace">
+            <img src="https://static.toiimg.com/thumb/imgsize-123456,msid-117958086,width-200,resizemode-4/117958086.jpg" alt="Diversity">
+        </div>
+    </div>
+    <!-- Main Content -->
+    <div class="container">
+        <a href="basic.html" id="basic">
+            <section>
+                <h1>Basic Human Rights</h1>
+                <p>Learn about the fundamental rights every individual is entitled to.</p>
+            </section>
+        </a>
+        <a href="inter.html" id="intermediate">
+            <section>
+                <h1>Intermediate Human Rights</h1>
+                <p>Delve deeper into rights that ensure equality and freedom.</p>
+            </section>
+        </a>
+        <a href="advence/home.html" id="advanced">
+            <section>
+                <h1>Advanced Human Rights</h1>
+                <p>Explore complex and global human rights challenges and policies.</p>
+            </section>
+        </a>
+    </div>
+
+</body>
+</html>

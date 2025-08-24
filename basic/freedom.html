@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Right to Freedom of Expression</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffefd5; /* Light peach background */
+        }
+        header {
+            background-color: #fdd835; /* Bright yellow */
+            color: #d32f2f; /* Red text */
+            text-align: center;
+            padding: 20px;
+            border-bottom: 5px solid #ff6f00; /* Orange border */
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px #ff6f00; /* Shadow for fun effect */
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 4px dashed #ff7043; /* Dashed border for playful effect */
+        }
+        h2 {
+            color: #d32f2f; /* Red headings */
+            margin-top: 20px;
+        }
+        p {
+            line-height: 1.8;
+            color: #333;
+        }
+        .moral {
+            font-weight: bold;
+            color: #00897b; /* Teal */
+            font-size: 1.2rem;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #4caf50; /* Bright green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            font-size: 18px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #388e3c; /* Darker green */
+            transform: scale(1.1); /* Slight zoom on hover */
+        }
+        .fun-elements {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .fun-elements img {
+            max-width: 80px;
+            margin: 0 10px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        .back-btn {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 18px;
+    background-color: #6c757d;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s ease, transform 0.2s;
+    font-size: 1em;
+}
+
+.back-btn:hover {
+    background-color: #495057;
+    transform: scale(1.05);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Right to Freedom of Expression</h1>
+    </header>
+
+    <section>
+        <a href="javascript:history.back()" class="back-btn">⬅ Back</a>
+        <h2>What is the Right to Freedom of Expression?</h2>
+        <p>
+            The Right to Freedom of Expression lets everyone share their ideas, opinions, and 
+            feelings openly, as long as they respect others. It’s about being heard and listening to others 
+            to create understanding and growth.
+        </p>
+
+        <h2>Story: Sam and the Village Wall 🧱</h2>
+        <p>
+            In the colorful village of Dreamwood 🌼, there was a big wall 🧱 where people painted their thoughts and ideas. 
+            Sam, a quiet boy, loved reading what others wrote, but he was afraid to share his own thoughts.
+        </p>
+        <p>
+            One day, he saw an artist painting the words: “Everyone’s voice matters.” Inspired, Sam picked up a brush 
+            and painted his first idea: “We can plant more trees to keep our village cool!” 🌳
+        </p>
+        <p>
+            The villagers loved his idea! Soon, everyone worked together to plant trees. 
+            Sam learned that sharing ideas can lead to amazing changes.
+        </p>
+
+        <h3 class="moral">Moral of the Story:</h3>
+        <p class="moral">
+            "Everyone has the right to express their thoughts and ideas. By sharing and listening, we can make the world better together." 🗣️🌍✨
+        </p>
+    </section>
+
+    <div class="button-container">
+        <button id="gameButton">Play the Fun Game 🎮</button>
+    </div>
+
+    <div class="fun-elements">
+        <img src="https://img.icons8.com/color/96/balloon.png" alt="Balloon">
+        <img src="https://img.icons8.com/color/96/sun.png" alt="Sun">
+        <img src="https://img.icons8.com/color/96/rainbow.png" alt="Rainbow">
+    </div>
+
+    <script>
+        document.getElementById("gameButton").onclick = function () {
+            window.open(
+                'game.html', 
+                'popup', 
+                'width=600,height=400,scrollbars=yes,resizable=no,toolbar=no,location=no,status=no'
+            );
+        };
+    </script>
+</body>
+</html>

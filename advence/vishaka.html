@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content=device-width, initial-scale=1.0">
+    <title>Vishaka Guidelines Case Study</title>
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background: #34495e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 22px;
+        }
+
+        main {
+            width: 85%;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #c0392b;
+        }
+
+        .timeline {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .timeline h3 {
+            color: #2980b9;
+        }
+
+        .quiz-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #dfe6e9;
+            border-radius: 8px;
+        }
+
+        .quiz-section h2 {
+            text-align: center;
+        }
+
+        .quiz-options label {
+            display: block;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #219150;
+        }
+
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Vishaka Guidelines Case Study & Brain Analysis Quiz</h1>
+        <p>Legal Insights into Workplace Harassment Laws in India</p>
+    </header>
+
+    <main>
+        <section class="introduction">
+            <h2>Introduction</h2>
+            <p>The **Vishaka Guidelines** were established by the **Supreme Court of India** in **1997** in response to the **Bhanwari Devi case**, where a woman was gang-raped as an act of revenge for stopping child marriages.</p>
+        </section>
+
+        <section class="case-overview">
+            <h2>Case Overview</h2>
+            <p>**Case Name:** Vishaka & Others v. State of Rajasthan (1997)</p>
+            <p>**Victim:** Bhanwari Devi, a social worker from Rajasthan</p>
+            <p>**Crime:** Gang-rape in retaliation for social activism</p>
+            <p>**Judgment:** Supreme Court established the **Vishaka Guidelines** to prevent workplace harassment.</p>
+        </section>
+
+        <section class="timeline">
+            <h2>📅 Timeline of Events: What Happened That Day?</h2>
+
+            <h3>🔹 **August 1992 - The Incident**</h3>
+            <p>Bhanwari Devi, a social worker under the Rajasthan government’s **Women’s Development Program**, opposed child marriages in a village near Jaipur. Her activism angered powerful men in the community.</p>
+
+            <h3>🔹 **September 22, 1992 - The Assault**</h3>
+            <p>A group of five men entered her home in the evening and brutally gang-raped her in front of her husband.</p>
+
+            <h3>🔹 **September 23, 1992 - Police Complaint**</h3>
+            <p>She reported the crime at the **local police station**, but officers delayed filing an FIR. She was humiliated and asked insensitive questions.</p>
+
+            <h3>🔹 **1995 - Lower Court Verdict**</h3>
+            <p>The trial court **acquitted the accused**, stating that "upper caste men would not rape a lower-caste woman."</p>
+
+            <h3>🔹 **1997 - Supreme Court Judgment**</h3>
+            <p>After protests and legal petitions, the Supreme Court of India recognized the **right of women to a safe workplace** and introduced the **Vishaka Guidelines**.</p>
+        </section>
+
+        <section class="quiz-section">
+            <h2>Brain Analysis Quiz</h2>
+            <p><strong>Choose answers that reflect your thinking:</strong></p>
+            <form id="quiz-form">
+                <label>1. How should workplace harassment be prevented?</label>
+                <input type="radio" name="q1" value="law"> Stronger laws and stricter punishments<br>
+                <input type="radio" name="q1" value="police"> Faster police intervention<br>
+                <input type="radio" name="q1" value="human_rights"> Awareness campaigns for gender equality<br>
+                <input type="radio" name="q1" value="social_work"> Support for victims and counseling<br>
+
+                <label>2. How can women feel safer at work?</label>
+                <input type="radio" name="q2" value="law"> Workplace harassment laws should be enforced<br>
+                <input type="radio" name="q2" value="police"> More female police officers in workplaces<br>
+                <input type="radio" name="q2" value="human_rights"> Gender sensitization programs<br>
+                <input type="radio" name="q2" value="social_work"> More support groups for victims<br>
+
+                <button type="button" onclick="analyzeBrain()">Submit</button>
+            </form>
+            <p class="result" id="quiz-result"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Legal Awareness & Justice Initiative</p>
+    </footer>
+
+    <script>
+        function analyzeBrain() {
+            let answers = document.querySelectorAll('input[type="radio"]:checked');
+            let scores = { law: 0, police: 0, human_rights: 0, social_work: 0 };
+
+            answers.forEach(answer => {
+                scores[answer.value]++;
+            });
+
+            let highest = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+
+            let resultText = "Brain Analysis: ";
+            if (highest === "law") {
+                resultText += "You have a legal mindset! A career in law may be best for you.";
+            } else if (highest === "police") {
+                resultText += "You have a strong justice-driven mindset! You could do well in law enforcement.";
+            } else if (highest === "human_rights") {
+                resultText += "You have a social justice perspective! A human rights career could be suitable.";
+            } else {
+                resultText += "You focus on empowerment! Social work might be your calling.";
+            }
+
+            document.getElementById("quiz-result").innerText = resultText;
+        }
+    </script>
+
+</body>
+</html>
